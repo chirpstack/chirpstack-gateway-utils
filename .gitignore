@@ -1,0 +1,6 @@
+# hidden files
+.*
+!.gitignore
+
+# rust target dir
+/target
