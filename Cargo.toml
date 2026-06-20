@@ -15,7 +15,7 @@
     "usage",
     "derive",
   ] }
-  tokio = { version = "1.52", features = ["macros", "rt"] }
+  tokio = { version = "1.52", features = ["macros", "rt", "time"] }
   tokio-modbus = { version = "0.17", default-features = false, features = [
     "rtu",
   ] }
