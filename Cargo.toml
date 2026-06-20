@@ -3,7 +3,7 @@
   description = "ChirpStack Gateway Utils (getting battery status, watchdog)"
   repository = "https://github.com/chirpstack/chirpstack-gateway-utils/"
   license = "MIT"
-  version = "0.1.0"
+  version = "0.1.1"
   authors = ["Orne Brocaar <info@brocaar.com>"]
   edition = "2024"
   publish = false
