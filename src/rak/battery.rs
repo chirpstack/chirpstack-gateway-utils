@@ -1,4 +1,3 @@
-use std::env;
 use std::time::Duration;
 
 use anyhow::Result;
@@ -22,29 +21,28 @@ pub struct BatteryStatus {
 }
 
 impl BatteryStatus {
-    pub fn print(&self) {
-        let host = env::var("COLLECTD_HOSTNAME").unwrap_or_default();
-        if host.is_empty() {
-            println!("battery_voltage={:.2}", self.battery_voltage);
-            println!("battery_health_percent={}", self.battery_health_percent);
-            println!(
-                "battery_remaining_percent={:.2}",
-                self.battery_remaining_percent
-            );
-        } else {
-            println!(
-                "PUTVAL {}/battery/gauge-voltage N:{:.2}",
-                host, self.battery_voltage
-            );
-            println!(
-                "PUTVAL {}/battery/percent-health N:{}",
-                host, self.battery_health_percent
-            );
-            println!(
-                "PUTVAL {}/battery/percent-remaining N:{:.2}",
-                host, self.battery_remaining_percent
-            )
-        }
+    pub fn print_kv(&self) {
+        println!("battery_voltage={:.2}", self.battery_voltage);
+        println!("battery_health_percent={}", self.battery_health_percent);
+        println!(
+            "battery_remaining_percent={:.2}",
+            self.battery_remaining_percent
+        );
+    }
+
+    pub fn print_collectd(&self, host: &str) {
+        println!(
+            "PUTVAL {}/battery/gauge-voltage N:{:.2}",
+            host, self.battery_voltage
+        );
+        println!(
+            "PUTVAL {}/battery/percent-health N:{}",
+            host, self.battery_health_percent
+        );
+        println!(
+            "PUTVAL {}/battery/percent-remaining N:{:.2}",
+            host, self.battery_remaining_percent
+        )
     }
 }
 
