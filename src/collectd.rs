@@ -13,8 +13,8 @@ pub async fn run() -> Result<()> {
         return Ok(());
     }
 
-    let interval: u64 = interval.parse()?;
-    let interval = Duration::from_secs(interval);
+    let interval: f64 = interval.parse()?;
+    let interval = Duration::from_secs(interval as u64);
 
     loop {
         if let Ok(v) = rak::battery::battery_status().await {
